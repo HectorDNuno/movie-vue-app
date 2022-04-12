@@ -1,4 +1,4 @@
-# movie-app-frontend
+# movie-vue-app
 
 ## Project setup
 ```
