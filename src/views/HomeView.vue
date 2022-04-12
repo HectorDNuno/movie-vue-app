@@ -6,6 +6,7 @@ export default {
       message: "Lets see some movies!",
       movies: [],
       newMovieParams: {},
+      currentMovie: {},
     };
   },
   created: function () {
@@ -24,6 +25,11 @@ export default {
         })
         .catch((error) => console.log(error.response));
     },
+    showMovie: function (movie) {
+      console.log(movie);
+      this.currentMovie = movie;
+      document.querySelector("#movie-info").showModal();
+    },
   },
 };
 </script>
@@ -31,7 +37,6 @@ export default {
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <button v-on:click="addMovie">Add a movie!</button>
 
     <div>
       Title:
@@ -47,12 +52,40 @@ export default {
       <input type="text" v-model="newMovieParams.director" />
     </div>
 
+    <button v-on:click="addMovie">Add movie!</button>
+
     <div v-for="movie in movies" :key="movie.id">
       <p>Title: {{ movie.title }}</p>
       <p>Year: {{ movie.year }}</p>
-      <p>Plot: {{ movie.plot }}</p>
-      <p>Director: {{ movie.director }}</p>
+      <!-- <p>Plot: {{ movie.plot }}</p>
+      <p>Director: {{ movie.director }}</p> -->
+      <button v-on:click="showMovie(movie)">See More</button>
     </div>
+
+    <dialog id="movie-info">
+      <form method="dialog">
+        <h1>Movie Info</h1>
+        <!-- <p>
+          Title:
+          <input type="text" v-model="currentMovie.title" />
+        </p>
+        <p>
+          Year:
+          <input type="text" v-model="currentMovie.year" />
+        </p> -->
+        <p>
+          Plot:
+          <input type="text" v-model="currentMovie.plot" />
+        </p>
+        <p>
+          Director:
+          <input type="text" v-model="currentMovie.director" />
+        </p>
+        <button>Close</button>
+        <button>Edit</button>
+        <button>Destroy</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
