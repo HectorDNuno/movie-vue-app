@@ -36,6 +36,13 @@ export default {
         console.log("Updated!", response.data);
       });
     },
+    destroyMovie: function (movie) {
+      axios.delete("/movie/" + movie.id).then((response) => {
+        console.log("Deleted!", response.data);
+        var index = this.movies.indexOf(movie);
+        this.movies.splice(index, 1);
+      });
+    },
   },
 };
 </script>
@@ -89,7 +96,7 @@ export default {
         </p>
         <button>Close</button>
         <button v-on:click="updateMovie(currentMovie)">Edit</button>
-        <button>Destroy</button>
+        <button v-on:click="destroyMovie(currentMovie)">Destroy</button>
       </form>
     </dialog>
   </div>
