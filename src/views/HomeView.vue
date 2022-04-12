@@ -30,6 +30,12 @@ export default {
       this.currentMovie = movie;
       document.querySelector("#movie-info").showModal();
     },
+    updateMovie: function (movie) {
+      var updateMovieParams = movie;
+      axios.patch("/movie/" + movie.id + ".json", updateMovieParams).then((response) => {
+        console.log("Updated!", response.data);
+      });
+    },
   },
 };
 </script>
@@ -65,14 +71,14 @@ export default {
     <dialog id="movie-info">
       <form method="dialog">
         <h1>Movie Info</h1>
-        <!-- <p>
+        <p>
           Title:
           <input type="text" v-model="currentMovie.title" />
         </p>
         <p>
           Year:
           <input type="text" v-model="currentMovie.year" />
-        </p> -->
+        </p>
         <p>
           Plot:
           <input type="text" v-model="currentMovie.plot" />
@@ -82,7 +88,7 @@ export default {
           <input type="text" v-model="currentMovie.director" />
         </p>
         <button>Close</button>
-        <button>Edit</button>
+        <button v-on:click="updateMovie(currentMovie)">Edit</button>
         <button>Destroy</button>
       </form>
     </dialog>
