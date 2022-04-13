@@ -8,7 +8,7 @@
     |
     <router-link to="/movies/new">Add Movie</router-link>
     |
-    <router-link to="/movies/:id">Movie</router-link>
+    <router-link to="/movies/edit/:id">Edit</router-link>
   </nav>
   <router-view />
 </template>

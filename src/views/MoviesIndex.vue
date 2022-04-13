@@ -23,7 +23,7 @@ export default {
       <p>{{ movie.year }}</p>
       <p>{{ movie.plot }}</p>
       <p>{{ movie.director }}</p>
-      <a :href="`/movies/${movie.id}`">Go to movie page</a>
+      <a :href="`/movies/show/${movie.id}`">Go to movie page</a>
     </div>
   </div>
 </template>

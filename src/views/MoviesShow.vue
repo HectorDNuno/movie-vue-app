@@ -24,5 +24,7 @@ export default {
     <p>{{ currentMovie.plot }}</p>
     <p>{{ currentMovie.director }}</p>
     <a href="/movies">back to all movies</a>
+    |
+    <a :href="`/movies/edit/${currentMovie.id}`">edit movie</a>
   </div>
 </template>
