@@ -9,6 +9,8 @@
     <router-link to="/movies/new">Add Movie</router-link>
     |
     <router-link to="/movies/edit/:id">Edit</router-link>
+    |
+    <router-link to="/signup">Sign Up</router-link>
   </nav>
   <router-view />
 </template>
