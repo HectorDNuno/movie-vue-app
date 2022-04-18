@@ -24,6 +24,7 @@ export default {
         console.log("Deleted!", response.data);
         var index = this.movies.indexOf(movie);
         this.movies.splice(index, 1);
+        this.$router.push("/movies");
       });
     },
   },
