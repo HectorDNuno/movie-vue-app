@@ -13,6 +13,7 @@ export default {
       axios.post("/movie.json", this.newMovieParams).then((response) => {
         console.log("movie added", response.data);
         this.movies.push(response.data);
+        this.$router.push("/movies");
       });
     },
   },
