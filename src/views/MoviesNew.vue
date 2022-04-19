@@ -5,7 +5,7 @@ export default {
     return {
       message: "Add a movie!",
       movies: [],
-      newMovieParams: {},
+      newMovieParams: { plot: "" },
     };
   },
   methods: {
@@ -34,6 +34,7 @@ export default {
       <p>
         Plot:
         <input type="text" v-model="newMovieParams.plot" />
+        <small v-if="newMovieParams.plot.length > 100">Plot is too long!</small>
       </p>
       <p>
         Director:
