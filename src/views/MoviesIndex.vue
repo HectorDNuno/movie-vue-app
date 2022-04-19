@@ -23,7 +23,10 @@ export default {
 <template>
   <div class="movies-index">
     Search by title:
-    <input v-model="titleFilter" />
+    <input v-model="titleFilter" list="titles" />
+    <datalist id="titles">
+      <option v-for="movie in movies" :key="movie.id">{{ movie.title }}</option>
+    </datalist>
     <div v-for="movie in filterBy(movies, titleFilter, 'title')" :key="movie.id">
       <h4>{{ movie.title }}</h4>
       <p>{{ movie.year }}</p>
