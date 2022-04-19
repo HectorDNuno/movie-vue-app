@@ -1,10 +1,14 @@
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
+
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       message: "Lets see some movies!",
       movies: [],
+      titleFilter: "",
     };
   },
   created: function () {
@@ -18,7 +22,9 @@ export default {
 
 <template>
   <div class="movies-index">
-    <div v-for="movie in movies" :key="movie.id">
+    Search by title:
+    <input v-model="titleFilter" />
+    <div v-for="movie in filterBy(movies, titleFilter, 'title')" :key="movie.id">
       <h4>{{ movie.title }}</h4>
       <p>{{ movie.year }}</p>
       <p>{{ movie.plot }}</p>
